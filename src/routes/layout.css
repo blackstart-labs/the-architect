@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+@import '../styles/technical-grid.css';
+
+@theme {
+	--font-sans: 'Geist', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-display: 'Manrope', 'Geist', sans-serif;
+	--font-mono: 'Geist Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+	/* Approved Architectural Dark Palette */
+	--color-arch-black: #000000;
+	--color-arch-graphite: #181818;
+	--color-arch-charcoal: #181818;
+	--color-arch-surface: #1f1f1f;
+	--color-arch-elevated: #272727;
+	--color-arch-border: #313131;
+	--color-arch-subtle: #131209;
+
+	/* Disciplined Technical Accent: Amber Gold */
+	--color-arch-accent: #e5a93c;
+	--color-arch-accent-muted: #a37525;
+	--color-arch-accent-light: #f7d070;
+	--color-arch-amber: #d97706;
+
+	/* Engineering Disciplines & Overlays */
+	--color-arch-cyan: #0ea5e9;
+	--color-arch-rebar: #ef4444;
+	--color-arch-mep: #10b981;
+}
+
+@layer base {
+	html {
+		background-color: #131209;
+		color: #f5f4f0;
+		font-family: var(--font-sans);
+		text-rendering: geometricPrecision;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		min-height: 100vh;
+		background-color: #131209;
+		overflow-x: hidden;
+		background-image:
+			radial-gradient(ellipse 80% 60% at 50% 0%, rgba(229, 169, 60, 0.025), transparent 70%),
+			radial-gradient(ellipse 60% 50% at 100% 100%, rgba(255, 255, 255, 0.015), transparent 60%);
+		background-attachment: fixed;
+	}
+
+	/* Tight tracking on prominent headings */
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-display);
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	/* Strict prohibition of italic typography as per specification */
+	* {
+		font-style: normal !important;
+	}
+
+	/* Accessible outline focus states */
+	:focus-visible {
+		outline: 2px solid var(--color-arch-accent);
+		outline-offset: 2px;
+	}
+}
+
+/* Editorial Hero Text Gradient */
+.text-gradient-hero {
+	background: linear-gradient(90deg, #ffffff 15%, #9b9b9b 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	display: inline-block;
+}
+
+/* Modern Glass Pill Navigation */
+.glass-island {
+	background: rgba(24, 24, 24, 0.75);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* Modern Card Surface */
+.card-modern {
+	background-color: #1f1f1f;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.card-modern:hover {
+	border-color: rgba(229, 169, 60, 0.4);
+	background-color: #272727;
+	transform: translateY(-2px);
+}

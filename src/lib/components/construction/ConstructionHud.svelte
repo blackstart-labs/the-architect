@@ -1,0 +1,121 @@
+<script lang="ts">
+	import type { ConstructionStage } from '$lib/types/construction';
+
+	let {
+		stages,
+		activeStageIndex = 0,
+		progress = 0,
+		onSelectStage
+	} = $props<{
+		stages: ConstructionStage[];
+		activeStageIndex: number;
+		progress?: number;
+		onSelectStage?: (index: number) => void;
+	}>();
+
+	let current = $derived(stages[activeStageIndex] || stages[0]);
+	let progressPercent = $derived(Math.round(Math.min(100, Math.max(0, progress * 100))));
+</script>
+
+<div class="pointer-events-none relative flex h-full w-full flex-col justify-between p-4 sm:p-6 md:p-8">
+	<!-- Top Bar: Floating Metadata Pill -->
+	<div class="pointer-events-auto flex flex-wrap items-center justify-between gap-3">
+		<div class="flex items-center gap-2.5 rounded-full border border-white/10 bg-[#161616]/80 px-4 py-1.5 backdrop-blur-xl shadow-lg">
+			<span class="inline-flex items-center gap-1.5 rounded-full bg-[#e5a93c] px-2.5 py-0.5 text-[11px] font-bold text-black uppercase tracking-wider">
+				Stage {current.stageNumber} / 13
+			</span>
+			<span class="text-xs font-medium text-white/80">{current.discipline}</span>
+		</div>
+
+		<div class="flex items-center gap-3 rounded-full border border-white/10 bg-[#161616]/80 px-4 py-1.5 backdrop-blur-xl shadow-lg">
+			<span class="text-[11px] font-mono uppercase tracking-wider text-white/40">Datum:</span>
+			<span class="text-xs font-semibold text-white">{current.elevation}</span>
+		</div>
+	</div>
+
+	<!-- Bottom Section: Floating Telemetry Card & Sleek Scrubber -->
+	<div class="flex flex-col gap-4">
+		<!-- Left-Aligned Floating BIM Telemetry Card -->
+		<div class="pointer-events-auto max-w-md sm:max-w-lg rounded-2xl border border-white/10 bg-[#161616]/90 p-5 backdrop-blur-2xl shadow-2xl transition-all duration-300">
+			<div>
+				<div class="text-[11px] font-mono tracking-wider text-[#e5a93c] uppercase">
+					{current.datumCoord}
+				</div>
+				<h2 class="mt-1 font-display text-xl sm:text-2xl font-bold tracking-tight text-white">
+					{current.title}
+				</h2>
+				<p class="mt-1.5 text-xs sm:text-sm leading-relaxed text-white/70">
+					{current.subtitle}
+				</p>
+			</div>
+
+			<!-- Specs Grid -->
+			<div class="mt-4 grid grid-cols-2 gap-2.5 rounded-xl border border-white/5 bg-black/40 p-3">
+				<div>
+					<span class="text-[10px] font-medium uppercase tracking-wider text-[#e5a93c]">
+						{current.keyMetric.label}
+					</span>
+					<div class="text-sm font-bold text-white">{current.keyMetric.value}</div>
+					<div class="text-[10px] text-white/40">Tol: {current.keyMetric.tolerance}</div>
+				</div>
+
+				<div>
+					<span class="text-[10px] font-medium uppercase tracking-wider text-white/40">
+						{current.specs[0]?.label || 'Primary Spec'}
+					</span>
+					<div class="text-sm font-semibold text-white">
+						{current.specs[0]?.value || 'Specified'}
+					</div>
+					<div class="text-[10px] text-white/40 truncate">
+						{current.specs[1]?.label}: {current.specs[1]?.value}
+					</div>
+				</div>
+			</div>
+
+			<!-- Field Log Quote -->
+			<div class="mt-3.5 flex items-start gap-2.5 rounded-lg border-l-2 border-[#e5a93c] bg-white/[0.03] px-3 py-2 text-[11px] text-white/70">
+				<span class="font-mono text-[#e5a93c]">LOG:</span>
+				<span class="leading-normal">{current.engineeringNote}</span>
+			</div>
+		</div>
+
+		<!-- Interactive Timeline Scrubber & Progress Indicator -->
+		<div class="pointer-events-auto rounded-2xl border border-white/10 bg-[#161616]/85 p-3.5 backdrop-blur-xl shadow-2xl">
+			<!-- Scrub Progress Line -->
+			<div class="mb-3 flex items-center justify-between text-xs">
+				<div class="flex items-center gap-2">
+					<span class="h-1.5 w-1.5 rounded-full bg-[#e5a93c] animate-pulse"></span>
+					<span class="text-[11px] font-medium tracking-wider text-white/60 uppercase">Construction Sequence</span>
+				</div>
+				<div class="flex items-center gap-3">
+					<span class="hidden sm:inline text-[11px] text-white/40">Scroll to advance</span>
+					<span class="font-mono text-xs font-bold text-[#e5a93c]">{progressPercent}%</span>
+				</div>
+			</div>
+
+			<!-- Smooth Progress Bar Track -->
+			<div class="relative h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+				<div
+					class="h-full bg-gradient-to-r from-[#e5a93c] to-[#f7d070] transition-[width] duration-150 ease-out"
+					style="width: {progressPercent}%;"
+				></div>
+			</div>
+
+			<!-- Stepper Buttons -->
+			<div class="mt-3 flex items-center justify-between gap-1 overflow-x-auto py-1">
+				{#each stages as stage, idx}
+					<button
+						type="button"
+						onclick={() => onSelectStage?.(idx)}
+						class="flex h-7 min-w-[28px] sm:min-w-[32px] items-center justify-center rounded-lg text-xs font-mono font-medium transition-all duration-200 {idx === activeStageIndex
+							? 'bg-[#e5a93c] text-black font-bold shadow-[0_0_12px_rgba(229,169,60,0.5)] scale-105'
+							: 'bg-white/5 text-white/60 hover:bg-white/15 hover:text-white'}"
+						title="{stage.stageNumber}: {stage.title}"
+					>
+						{stage.stageNumber}
+					</button>
+				{/each}
+			</div>
+		</div>
+	</div>
+</div>
