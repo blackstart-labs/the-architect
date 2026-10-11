@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MapPin, MoveDown, HardHat, Layers3, Ruler, ShieldCheck, X } from 'lucide-svelte';
+	import { MoveDown, HardHat, Layers3, Ruler, ShieldCheck, X } from 'lucide-svelte';
 	import { projects } from './data';
 	import SiteHeader from './components/SiteHeader.svelte';
 	import ProjectCard from './components/ProjectCard.svelte';
@@ -88,10 +88,21 @@
 					><MoveDown size={18} aria-hidden="true" /><TechnicalLabel
 						text="Explore the construction sequence"
 					/></a
-				><span class="image-caption"
-					><MapPin size={12} style="display:inline;vertical-align:middle" /> Dhaka-inspired architecture
-					· Representative visualization</span
 				>
+				<dl class="hero-proof">
+					<div>
+						<dt class="technical-label">Storeys</dt>
+						<dd>10</dd>
+					</div>
+					<div>
+						<dt class="technical-label">Construction stages</dt>
+						<dd>15</dd>
+					</div>
+					<div>
+						<dt class="technical-label">Interior scenes</dt>
+						<dd>08</dd>
+					</div>
+				</dl>
 			</div>
 			<Divider /></Container
 		>
