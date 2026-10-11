@@ -4,7 +4,7 @@ The current homepage is a Bangladesh-focused editorial portfolio with a real,
 scroll-controlled Three.js residential construction study: **15 construction stages,
 10 above-ground floors (Ground + 01–09), and 8 interior-to-exterior scenes**.
 
-**Deployment:** see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Use Node 22.12+,
+**Deployment:** see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Use Node 24.x,
 `npm ci`, `npm run build`, and `ORIGIN=https://your-domain.example npm start`.
 
 All current homepage projects are representative studies. The inquiry form submits

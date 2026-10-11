@@ -5,7 +5,7 @@ It uses real procedural Three.js scenes, with no downloaded models or required A
 
 ## Node hosting (Render, Railway, a VPS, or a container)
 
-Requires Node 22.12+.
+Requires Node 24.x.
 
 ```sh
 npm ci
@@ -29,6 +29,32 @@ configure adapter-node's trusted client-address header only if that proxy strips
 visitor-supplied copies of the header.
 
 `package-lock.json` is the reproducible npm deployment lockfile.
+
+## Vercel
+
+`svelte.config.js` selects the Vercel adapter when `VERCEL=1` (set automatically
+by Vercel), and the standalone Node adapter elsewhere. `vercel.json` explicitly
+selects SvelteKit and resets the output directory to automatic detection rather
+than the incorrect `public` directory. Vercel builds generate `.vercel/output/`
+with both static assets and a server function, including `/api/contact`.
+
+In Vercel project settings, use the SvelteKit framework preset and Node 24.x.
+Remove any Output Directory override set to `public`; do not set it to `build`
+or deploy only the client files. Keep the build command as `npm run build`.
+
+Add `WEB3FORMS_ACCESS_KEY` as a private environment variable for Production and
+Preview. The Git-ignored local `.env` is intentionally not uploaded. Set
+`PUBLIC_SITE_URL` to the real production origin for canonical and sharing URLs.
+Do not set `ORIGIN` to a local development address on Vercel.
+
+Reproduce and validate the deployment artifact locally:
+
+```sh
+VERCEL=1 npm run build
+node scripts/check-vercel-output.mjs
+```
+
+`npm start` remains for standalone Node hosting, not Vercel serverless functions.
 
 ## Verification
 
