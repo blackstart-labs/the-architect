@@ -54,7 +54,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '03',
 		discipline: 'Architectural Engineering',
 		title: 'Architectural Concept & CAD Footprint',
-		subtitle: '2D technical floor plans and structural grid generating the commercial retail volume',
+		subtitle:
+			'2D technical floor plans and structural grid generating the commercial retail volume',
 		elevation: '+1.200m FFL',
 		datumCoord: 'CAD-LAYER // ARCH-FP-01',
 		keyMetric: {
@@ -102,7 +103,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '05',
 		discipline: 'Geotechnical & Earth Retention',
 		title: 'Subterranean Excavation & Shoring',
-		subtitle: 'Cut to -5.500m formation level for basement parking and mechanical plant with perimeter shoring',
+		subtitle:
+			'Cut to -5.500m formation level for basement parking and mechanical plant with perimeter shoring',
 		elevation: '-5.500m BASEMENT FFL',
 		datumCoord: 'PIT B1 // FORMATION LEVEL',
 		keyMetric: {
@@ -126,7 +128,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '06',
 		discipline: 'Deep Foundation Engineering',
 		title: 'Bored Piling & Reinforced Raft Foundation',
-		subtitle: 'Cast-in-place concrete piles, rebar cages, monolithic pile caps, and perimeter tie beams',
+		subtitle:
+			'Cast-in-place concrete piles, rebar cages, monolithic pile caps, and perimeter tie beams',
 		elevation: '-24.000m PILE TOE',
 		datumCoord: 'PILE GRID 4x4 // 16 PRINCIPAL GROUPS',
 		keyMetric: {
@@ -150,7 +153,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '07',
 		discipline: 'Reinforced Concrete Structure',
 		title: 'RCC Structural Frame (Levels 1–6)',
-		subtitle: 'Heavy reinforced concrete columns, moment-resisting transfer beams, and central lift shear core',
+		subtitle:
+			'Heavy reinforced concrete columns, moment-resisting transfer beams, and central lift shear core',
 		elevation: '+24.800m ROOF BEAM LEVEL',
 		datumCoord: 'RCC FRAME // C40 CONCRETE',
 		keyMetric: {
@@ -174,7 +178,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '08',
 		discipline: 'Structural Slabs & Cantilevers',
 		title: 'Post-Tensioned Slabs & Diaphragms',
-		subtitle: 'Post-tensioned horizontal diaphragms with central atrium cutout and entrance canopy projection',
+		subtitle:
+			'Post-tensioned horizontal diaphragms with central atrium cutout and entrance canopy projection',
 		elevation: '+21.000m LEVEL 6 SLAB',
 		datumCoord: 'SLAB DIAPHRAGM // THK 225mm',
 		keyMetric: {
@@ -198,7 +203,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '09',
 		discipline: 'Building Envelope & Solar Control',
 		title: 'Curtain Wall Facade & Solar Louver Fins',
-		subtitle: 'Double-glazed commercial storefront glazing with vertical aluminum sun louvers and canopy',
+		subtitle:
+			'Double-glazed commercial storefront glazing with vertical aluminum sun louvers and canopy',
 		elevation: '+24.800m PARAPET TOP',
 		datumCoord: 'ENVELOPE // LOW-E IGU + BRISE-SOLEIL',
 		keyMetric: {
@@ -222,7 +228,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '10',
 		discipline: 'Mechanical, Electrical & Piping',
 		title: 'MEP Infrastructure & Rooftop Chiller Plant',
-		subtitle: 'Central chilled water HVAC plant, electrical busducts, fire sprinklers, and rooftop cooling towers',
+		subtitle:
+			'Central chilled water HVAC plant, electrical busducts, fire sprinklers, and rooftop cooling towers',
 		elevation: '+27.500m ROOFTOP PLANT',
 		datumCoord: 'MEP-CHILLER // 1,200 TR PLANT',
 		keyMetric: {
@@ -246,7 +253,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '11',
 		discipline: 'Commercial Interior Architecture',
 		title: 'Multi-Level Central Atrium & Escalators',
-		subtitle: 'Grand central public atrium with crisscrossing escalators, retail shopfronts, and polished terrazzo',
+		subtitle:
+			'Grand central public atrium with crisscrossing escalators, retail shopfronts, and polished terrazzo',
 		elevation: '+5.400m LEVEL 2 ATRIUM',
 		datumCoord: 'INTERIOR ATRIUM // PUBLIC COMMERCE',
 		keyMetric: {
@@ -270,7 +278,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '12',
 		discipline: 'Civil Infrastructure & Landscape',
 		title: 'Civic Entrance Plaza, Canopy & Drop-Off',
-		subtitle: 'Vehicular drop-off driveway, security bollards, pedestrian plaza pavers, and native Dhaka street trees',
+		subtitle:
+			'Vehicular drop-off driveway, security bollards, pedestrian plaza pavers, and native Dhaka street trees',
 		elevation: '+1.200m PLAZA FINISH',
 		datumCoord: 'CIVIC PLAZA // GULSHAN FRONTAGE',
 		keyMetric: {
@@ -294,7 +303,8 @@ export const constructionStages: ConstructionStage[] = [
 		stageNumber: '13',
 		discipline: 'Handover & Commercial Operation',
 		title: 'Completed Dhaka Central Mall',
-		subtitle: 'Fully operational commercial landmark with evening facade lighting and vibrant retail presence',
+		subtitle:
+			'Fully operational commercial landmark with evening facade lighting and vibrant retail presence',
 		elevation: '+24.800m COMPLETED ROOF',
 		datumCoord: 'COMMISSIONED // AS-BUILT HANDOVER',
 		keyMetric: {

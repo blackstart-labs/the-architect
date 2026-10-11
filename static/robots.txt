@@ -1,5 +1,0 @@
-# Vance Engineering & BIM Consultancy Robots Directive
-User-agent: *
-Allow: /
-
-Sitemap: /sitemap.xml

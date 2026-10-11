@@ -239,10 +239,10 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 	const surroundingCoords: Array<[number, number, number, number, number]> = [
 		[-32, 10, -5, 14, 20], // West commercial mid-rise
 		[-34, 12, 18, 12, 24], // Southwest block
-		[32, 10, -5, 14, 20],  // East commercial mid-rise
-		[34, 13, 18, 12, 26],  // Southeast block
+		[32, 10, -5, 14, 20], // East commercial mid-rise
+		[34, 13, 18, 12, 26], // Southeast block
 		[-16, 14, -30, 20, 28], // North background tower 1
-		[16, 15, -30, 22, 30]   // North background tower 2
+		[16, 15, -30, 22, 30] // North background tower 2
 	];
 	surroundingCoords.forEach(([x, h, z, w, d]) => {
 		const bldg = new THREE.Mesh(new THREE.BoxGeometry(w, h * 2, d), urbanBuildingMat);
@@ -309,7 +309,10 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 	bmPillar.position.set(-12, 0.45, 14);
 	surveyGroup.add(bmPillar);
 
-	const bmBrassPlate = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.04, 8), markerGoldMat);
+	const bmBrassPlate = new THREE.Mesh(
+		new THREE.CylinderGeometry(0.08, 0.08, 0.04, 8),
+		markerGoldMat
+	);
 	bmBrassPlate.position.set(-12, 0.92, 14);
 	surveyGroup.add(bmBrassPlate);
 
@@ -612,7 +615,10 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 	// Horizontal Spandrel Charcoal Metal Bands at Each Floor Level
 	for (let f = 1; f <= floors; f++) {
 		const yBand = 1.2 + groundHeight + (f - 1) * floorHeight;
-		const spandrelFront = new THREE.Mesh(new THREE.BoxGeometry(37.2, 0.8, 0.2), spandrelCharcoalMat);
+		const spandrelFront = new THREE.Mesh(
+			new THREE.BoxGeometry(37.2, 0.8, 0.2),
+			spandrelCharcoalMat
+		);
 		spandrelFront.position.set(0, yBand, 13.1);
 		facadeGroup.add(spandrelFront);
 
@@ -626,7 +632,10 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 	for (let lx = -17; lx <= 17; lx += 1.8) {
 		// Keep entrance portal clear (x: -5 to +5 on ground/lvl2)
 		if (Math.abs(lx) < 5) continue;
-		const fin = new THREE.Mesh(new THREE.BoxGeometry(0.12, buildingHeight - 1, 0.75), louverBronzeMat);
+		const fin = new THREE.Mesh(
+			new THREE.BoxGeometry(0.12, buildingHeight - 1, 0.75),
+			louverBronzeMat
+		);
 		fin.position.set(lx, facadeYCenter, 13.5);
 		fin.castShadow = true;
 		facadeGroup.add(fin);
@@ -689,7 +698,8 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 
 	// Ceiling cavity primary supply & return ductwork (Levels 1 to 6)
 	for (let f = 0; f < floors; f++) {
-		const yDuct = f === 0 ? 1.2 + groundHeight - 0.7 : 1.2 + groundHeight + (f - 1) * floorHeight + 3.0;
+		const yDuct =
+			f === 0 ? 1.2 + groundHeight - 0.7 : 1.2 + groundHeight + (f - 1) * floorHeight + 3.0;
 		const ductLoop1 = new THREE.Mesh(new THREE.BoxGeometry(30, 0.45, 0.55), mepDuctMat);
 		ductLoop1.position.set(0, yDuct, -6);
 		mepGroup.add(ductLoop1);
@@ -827,7 +837,8 @@ export function createConstructionScene(canvas: HTMLCanvasElement): Construction
 
 	// Warm Linear LED Luminaires lining the atrium void ceilings
 	for (let f = 0; f < floors; f++) {
-		const yLight = f === 0 ? 1.2 + groundHeight - 0.2 : 1.2 + groundHeight + (f - 1) * floorHeight + 3.6;
+		const yLight =
+			f === 0 ? 1.2 + groundHeight - 0.2 : 1.2 + groundHeight + (f - 1) * floorHeight + 3.6;
 		[-3.8, 3.8].forEach((lz) => {
 			const lightStrip = new THREE.Mesh(new THREE.BoxGeometry(15.6, 0.06, 0.12), warmLightMat);
 			lightStrip.position.set(0, yLight, lz);

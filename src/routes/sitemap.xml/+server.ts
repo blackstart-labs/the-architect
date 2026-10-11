@@ -1,27 +1,11 @@
-import { allProjects } from '$content/projects';
-import { allServices } from '$content/services';
-import { allArticles } from '$content/journal';
 import type { RequestHandler } from './$types';
+import { siteOrigin, escapeXml } from '$lib/seo';
 
 export const GET: RequestHandler = ({ url }) => {
-	const domain = url.origin;
+	const domain = escapeXml(siteOrigin(url.origin));
 
-	const staticRoutes = [
-		'',
-		'/about',
-		'/projects',
-		'/services',
-		'/process',
-		'/experience',
-		'/journal',
-		'/contact'
-	];
-
-	const projectRoutes = allProjects.map((p) => `/projects/${p.slug}`);
-	const serviceRoutes = allServices.map((s) => `/services/${s.slug}`);
-	const articleRoutes = allArticles.map((a) => `/journal/${a.slug}`);
-
-	const allRoutes = [...staticRoutes, ...projectRoutes, ...serviceRoutes, ...articleRoutes];
+	// Only the verified-scope landing experience is part of the public portfolio.
+	const allRoutes = [''];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
