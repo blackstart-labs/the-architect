@@ -34,7 +34,13 @@
 	background-size: 96px 96px;
 	pointer-events: none;
 	mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
-	-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		transparent 0%,
+		black 20%,
+		black 75%,
+		transparent 100%
+	);
 	z-index: 0;
 }
 

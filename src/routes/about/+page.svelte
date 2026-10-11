@@ -25,14 +25,14 @@
 		<div class="space-y-6 font-sans text-base leading-relaxed text-white/80 lg:col-span-2">
 			<p>
 				Marcus Vance is a licensed Professional Engineer (PE) and Fellow of The Institution of
-				Engineers, Bangladesh (FIEB) specializing in performance-based structural design,
-				reinforced concrete commercial developments, and high-fidelity openBIM digital twin integration.
+				Engineers, Bangladesh (FIEB) specializing in performance-based structural design, reinforced
+				concrete commercial developments, and high-fidelity openBIM digital twin integration.
 			</p>
 			<p>
 				Educated at Bangladesh University of Engineering and Technology (BUET) (B.Sc. in Civil &amp;
-				Structural Engineering) and specialized in advanced computational mechanics, his career spans major
-				commercial shopping malls and infrastructure schemes across Bangladesh before establishing an
-				independent consultancy in Dhaka.
+				Structural Engineering) and specialized in advanced computational mechanics, his career
+				spans major commercial shopping malls and infrastructure schemes across Bangladesh before
+				establishing an independent consultancy in Dhaka.
 			</p>
 
 			<div class="border-l-2 border-[#e5a93c] bg-[#181818] p-6 font-mono text-sm text-white/90">
@@ -56,11 +56,15 @@
 				</li>
 				<li class="flex items-start gap-2">
 					<span class="text-[#e5a93c]">▸</span>
-					<span>Enlisted Structural Engineer (Category-A), Capital Development Authority (RAJUK)</span>
+					<span
+						>Enlisted Structural Engineer (Category-A), Capital Development Authority (RAJUK)</span
+					>
 				</li>
 				<li class="flex items-start gap-2">
 					<span class="text-[#e5a93c]">▸</span>
-					<span>Lead Author on peer-reviewed monographs on sub-soil alluvium foundation mechanics</span>
+					<span
+						>Lead Author on peer-reviewed monographs on sub-soil alluvium foundation mechanics</span
+					>
 				</li>
 			</ul>
 		</div>

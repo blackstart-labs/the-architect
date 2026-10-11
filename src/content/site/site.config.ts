@@ -24,14 +24,12 @@ export const siteConfig: SiteConfig = {
 			'Currently accepting prime structural engineering commissions and peer reviews in Bangladesh.'
 	},
 	navLinks: [
-		{ label: 'Overview', href: '/', code: '00' },
 		{ label: 'Projects', href: '/projects', code: '01' },
 		{ label: 'Services', href: '/services', code: '02' },
 		{ label: 'Process', href: '/process', code: '03' },
-		{ label: 'Experience', href: '/experience', code: '04' },
-		{ label: 'Journal', href: '/journal', code: '05' },
-		{ label: 'About', href: '/about', code: '06' },
-		{ label: 'Contact', href: '/contact', code: '07' }
+		{ label: 'Studio', href: '/about', code: '04' },
+		{ label: 'Insights', href: '/journal', code: '05' },
+		{ label: 'Contact', href: '/contact', code: '06' }
 	],
 	socialLinks: [
 		{

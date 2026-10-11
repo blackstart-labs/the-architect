@@ -58,8 +58,7 @@
 				formStatus = 'error';
 			}
 		} catch (err: unknown) {
-			errorMessage =
-				err instanceof Error ? err.message : 'Network error during transmission.';
+			errorMessage = err instanceof Error ? err.message : 'Network error during transmission.';
 			formStatus = 'error';
 		}
 	}
@@ -80,20 +79,30 @@
 	}
 </script>
 
-<div class="rounded-3xl border border-white/10 bg-[#161616]/90 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl">
+<div
+	class="rounded-3xl border border-white/10 bg-[#161616]/90 p-8 shadow-2xl backdrop-blur-2xl sm:p-12"
+>
 	{#if formStatus === 'success'}
-		<div class="space-y-6 rounded-2xl border border-white/10 bg-[#1f1f1f]/90 p-8 sm:p-10 text-white">
-			<div class="inline-flex items-center gap-2 rounded-full bg-[#e5a93c]/15 px-3.5 py-1 text-xs font-semibold text-[#e5a93c]">
+		<div
+			class="space-y-6 rounded-2xl border border-white/10 bg-[#1f1f1f]/90 p-8 text-white sm:p-10"
+		>
+			<div
+				class="inline-flex items-center gap-2 rounded-full bg-[#e5a93c]/15 px-3.5 py-1 text-xs font-semibold text-[#e5a93c]"
+			>
 				<span class="h-1.5 w-1.5 rounded-full bg-[#e5a93c]"></span>
 				<span>Inquiry Confirmed &amp; Queued</span>
 			</div>
-			<h3 class="font-display text-2xl sm:text-3xl font-bold">Engineering RFQ Received</h3>
-			<p class="text-sm sm:text-base leading-relaxed text-white/70">
-				Your project inquiry has been logged for principal review. A formal engineering acknowledgment
-				and preliminary scheduling dossier will be sent to <span class="font-medium text-[#e5a93c]">{formData.email}</span> within 24 business hours.
+			<h3 class="font-display text-2xl font-bold sm:text-3xl">Engineering RFQ Received</h3>
+			<p class="text-sm leading-relaxed text-white/70 sm:text-base">
+				Your project inquiry has been logged for principal review. A formal engineering
+				acknowledgment and preliminary scheduling dossier will be sent to <span
+					class="font-medium text-[#e5a93c]">{formData.email}</span
+				> within 24 business hours.
 			</p>
 
-			<div class="rounded-xl border border-white/10 bg-black/40 p-4 font-mono text-xs text-white/60 space-y-1">
+			<div
+				class="space-y-1 rounded-xl border border-white/10 bg-black/40 p-4 font-mono text-xs text-white/60"
+			>
 				<div>Reference Docket: <span class="font-bold text-white">{confirmationCode}</span></div>
 				<div>Timestamp: {new Date().toISOString()}</div>
 				<div>Status: Queued for Lead Structural Evaluation</div>
@@ -112,11 +121,13 @@
 		<form onsubmit={handleSubmit} novalidate class="space-y-6">
 			<!-- Header Block -->
 			<div class="border-b border-white/10 pb-6">
-				<div class="mb-2 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-[#e5a93c]">
+				<div
+					class="mb-2 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-[#e5a93c]"
+				>
 					<span class="h-1.5 w-1.5 rounded-full bg-[#e5a93c]"></span>
 					<span>Project Commission Portal</span>
 				</div>
-				<h3 class="font-display text-xl sm:text-2xl font-bold text-white">
+				<h3 class="font-display text-xl font-bold text-white sm:text-2xl">
 					Request for Qualifications (RFQ) &amp; Technical Scope
 				</h3>
 			</div>
@@ -130,7 +141,10 @@
 			<!-- Contact Info Grid -->
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 				<div>
-					<label for="name" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+					<label
+						for="name"
+						class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+					>
 						Primary Contact / Firm <span class="text-[#e5a93c]">*</span>
 					</label>
 					<input
@@ -146,7 +160,10 @@
 				</div>
 
 				<div>
-					<label for="email" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+					<label
+						for="email"
+						class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+					>
 						Corporate Email <span class="text-[#e5a93c]">*</span>
 					</label>
 					<input
@@ -164,7 +181,10 @@
 
 			<!-- Inquiry Typology -->
 			<div>
-				<label for="inquiryType" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+				<label
+					for="inquiryType"
+					class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+				>
 					Commission Classification
 				</label>
 				<select
@@ -183,7 +203,10 @@
 			<!-- Secondary Parameters -->
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
 				<div>
-					<label for="location" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+					<label
+						for="location"
+						class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+					>
 						Project Jurisdiction / Site
 					</label>
 					<input
@@ -196,7 +219,10 @@
 				</div>
 
 				<div>
-					<label for="estimatedGfa" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+					<label
+						for="estimatedGfa"
+						class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+					>
 						Estimated GFA (m² / sq ft)
 					</label>
 					<input
@@ -209,7 +235,10 @@
 				</div>
 
 				<div>
-					<label for="phone" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+					<label
+						for="phone"
+						class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+					>
 						Phone (Optional)
 					</label>
 					<input
@@ -224,7 +253,10 @@
 
 			<!-- Scope Narrative -->
 			<div>
-				<label for="message" class="mb-2 block text-xs font-medium uppercase tracking-wider text-white/70">
+				<label
+					for="message"
+					class="mb-2 block text-xs font-medium tracking-wider text-white/70 uppercase"
+				>
 					Project Scope Narrative &amp; Critical Objectives <span class="text-[#e5a93c]">*</span>
 				</label>
 				<textarea
@@ -250,14 +282,19 @@
 				<button
 					type="submit"
 					disabled={formStatus === 'submitting'}
-					class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#e5a93c] px-9 py-4 font-sans text-sm font-semibold text-black transition-all duration-300 hover:bg-[#f7d070] hover:shadow-[0_0_30px_rgba(229,169,60,0.35)] disabled:opacity-50 sm:w-auto active:scale-95"
+					class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#e5a93c] px-9 py-4 font-sans text-sm font-semibold text-black transition-all duration-300 hover:bg-[#f7d070] hover:shadow-[0_0_30px_rgba(229,169,60,0.35)] active:scale-95 disabled:opacity-50 sm:w-auto"
 				>
 					{#if formStatus === 'submitting'}
 						<span>Transmitting Dossier...</span>
 					{:else}
 						<span>Submit Formal RFQ</span>
 						<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M14 5l7 7m0 0l-7 7m7-7H3"
+							/>
 						</svg>
 					{/if}
 				</button>

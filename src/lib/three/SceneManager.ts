@@ -427,7 +427,8 @@ export class SceneManager {
 		this.groupFoundation.visible = effectiveStage >= 3;
 		this.groupColumnsFrame.visible = effectiveStage >= 4;
 		this.groupFloorSlabs.visible = effectiveStage >= 5;
-		this.groupFacade.visible = (effectiveStage >= 6 && effectiveStage !== 7 && effectiveStage !== 8) || effectiveStage >= 12;
+		this.groupFacade.visible =
+			(effectiveStage >= 6 && effectiveStage !== 7 && effectiveStage !== 8) || effectiveStage >= 12;
 		this.groupBim.visible = effectiveStage === 7;
 		this.groupMep.visible = effectiveStage === 8 || (effectiveStage >= 9 && effectiveStage <= 11);
 		this.groupCranes.visible = effectiveStage >= 4 && effectiveStage <= 9;
@@ -437,11 +438,13 @@ export class SceneManager {
 
 		// Smooth growth scale on the structure as construction progresses
 		if (this.groupColumnsFrame.visible) {
-			const growthProgress = effectiveStage >= 10 ? 1 : Math.min(1, Math.max(0.1, (effectiveStage - 3 + fraction) / 6));
+			const growthProgress =
+				effectiveStage >= 10 ? 1 : Math.min(1, Math.max(0.1, (effectiveStage - 3 + fraction) / 6));
 			this.groupColumnsFrame.scale.set(1, growthProgress, 1);
 		}
 		if (this.groupFloorSlabs.visible) {
-			const slabGrowth = effectiveStage >= 10 ? 1 : Math.min(1, Math.max(0.1, (effectiveStage - 4 + fraction) / 5));
+			const slabGrowth =
+				effectiveStage >= 10 ? 1 : Math.min(1, Math.max(0.1, (effectiveStage - 4 + fraction) / 5));
 			this.groupFloorSlabs.scale.set(1, slabGrowth, 1);
 		}
 	}

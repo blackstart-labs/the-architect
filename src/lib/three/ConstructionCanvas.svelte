@@ -50,8 +50,10 @@
 	<!-- Architectural Viewport Datum Layer -->
 	<div class="pointer-events-none absolute inset-0 p-6 md:p-8">
 		<!-- Top Technical Status Pill -->
-		<div class="absolute top-6 left-6 md:left-8 flex items-center gap-3">
-			<div class="flex items-center gap-2 rounded-full border border-white/10 bg-[#161616]/75 px-3 py-1 text-xs text-white/70 backdrop-blur-md">
+		<div class="absolute top-6 left-6 flex items-center gap-3 md:left-8">
+			<div
+				class="flex items-center gap-2 rounded-full border border-white/10 bg-[#161616]/75 px-3 py-1 text-xs text-white/70 backdrop-blur-md"
+			>
 				<span class="inline-block h-2 w-2 animate-pulse rounded-full bg-[#e5a93c]"></span>
 				<span class="font-medium text-white/90">Interactive 3D Edifice Model</span>
 				<span class="text-white/20">|</span>
@@ -60,9 +62,11 @@
 		</div>
 
 		<!-- Subtle Bottom Scale / Compass Indicator -->
-		<div class="absolute bottom-6 left-6 md:left-8 hidden sm:flex items-center gap-4 rounded-full border border-white/10 bg-[#161616]/60 px-4 py-1.5 text-xs text-white/50 backdrop-blur-md">
+		<div
+			class="absolute bottom-6 left-6 hidden items-center gap-4 rounded-full border border-white/10 bg-[#161616]/60 px-4 py-1.5 text-xs text-white/50 backdrop-blur-md sm:flex md:left-8"
+		>
 			<span class="font-mono text-[11px]">SCALE 1:200</span>
-			<div class="relative h-1 w-14 bg-white/20 rounded-full overflow-hidden">
+			<div class="relative h-1 w-14 overflow-hidden rounded-full bg-white/20">
 				<div class="h-full w-1/2 bg-[#e5a93c]/60"></div>
 			</div>
 			<span class="font-mono text-[11px]">0 — 20m</span>

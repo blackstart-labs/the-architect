@@ -5,7 +5,7 @@
 </script>
 
 <article
-	class="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#1a1a1a]/70 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-[#e5a93c]/40 hover:bg-[#202020] hover:shadow-2xl"
+	class="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-[#1a1a1a]/70 p-6 backdrop-blur-md transition-all duration-300 hover:border-[#e5a93c]/40 hover:bg-[#202020] hover:shadow-2xl sm:p-8"
 >
 	<div>
 		<div class="flex items-center justify-between border-b border-white/10 pb-4 text-xs">
@@ -16,7 +16,7 @@
 		</div>
 
 		<h3
-			class="mt-5 font-display text-xl sm:text-2xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#e5a93c]"
+			class="mt-5 font-display text-xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#e5a93c] sm:text-2xl"
 		>
 			<a href="/services/{service.slug}" class="focus:outline-none">
 				<span class="absolute inset-0" aria-hidden="true"></span>
@@ -24,13 +24,13 @@
 			</a>
 		</h3>
 
-		<p class="mt-2 text-xs sm:text-sm leading-relaxed text-white/60">
+		<p class="mt-2 text-xs leading-relaxed text-white/60 sm:text-sm">
 			{service.tagline}
 		</p>
 
 		<!-- Software Stack Tags -->
 		<div class="mt-6">
-			<div class="mb-2 text-[10px] font-medium uppercase tracking-wider text-white/40">
+			<div class="mb-2 text-[10px] font-medium tracking-wider text-white/40 uppercase">
 				Computational Tooling:
 			</div>
 			<div class="flex flex-wrap gap-1.5 text-xs">
@@ -44,7 +44,7 @@
 
 		<!-- Deliverables List Sample -->
 		<div class="mt-6 border-t border-white/5 pt-4">
-			<div class="mb-2 text-[10px] font-medium uppercase tracking-wider text-[#e5a93c]">
+			<div class="mb-2 text-[10px] font-medium tracking-wider text-[#e5a93c] uppercase">
 				Key Deliverables:
 			</div>
 			<ul class="space-y-1.5 text-xs text-white/70">

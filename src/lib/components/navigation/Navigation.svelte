@@ -1,9 +1,17 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { siteConfig } from '$content/site/site.config';
 	import { onMount } from 'svelte';
 
 	let isMenuOpen = $state(false);
+	let isScrolled = $state(false);
+
+	const navItems = [
+		{ label: 'Home', href: '/' },
+		{ label: 'About', href: '/about' },
+		{ label: 'Service', href: '/services' },
+		{ label: 'Projects', href: '/projects' },
+		{ label: 'Blog', href: '/journal' }
+	];
 
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
@@ -25,155 +33,164 @@
 		}
 	}
 
+	function handleScroll() {
+		isScrolled = window.scrollY > 40;
+	}
+
 	onMount(() => {
 		window.addEventListener('keydown', handleKeydown);
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll();
+
 		return () => {
 			window.removeEventListener('keydown', handleKeydown);
+			window.removeEventListener('scroll', handleScroll);
 			document.body.style.overflow = '';
 		};
 	});
 </script>
 
-<header class="fixed top-6 left-0 right-0 z-40 flex justify-center px-4">
-	<!-- Desktop Floating Glass Island -->
-	<nav
-		class="hidden md:flex items-center justify-between gap-8 glass-island px-6 py-2.5 rounded-full shadow-2xl transition-all duration-500"
-		aria-label="Main Navigation"
-	>
-		<!-- Studio Identity -->
-		<a href="/" class="flex items-center gap-2.5 text-white transition-opacity hover:opacity-80">
-			<div class="h-2.5 w-2.5 rounded-full bg-[#e5a93c]"></div>
-			<div class="flex items-baseline gap-2">
-				<span class="text-sm font-semibold tracking-tight text-white">{siteConfig.name}</span>
-				<span class="text-xs text-white/40 font-mono">PE, SE</span>
-			</div>
-		</a>
+<header class="fixed top-0 right-0 left-0 z-50 w-full transition-all duration-300">
+	<div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8">
+		<div
+			class="flex items-center justify-between transition-all duration-300 {isScrolled
+				? 'rounded-2xl border border-white/20 bg-black/60 px-5 py-2.5 shadow-lg backdrop-blur-xl'
+				: 'px-2 py-1'}"
+		>
+			<!-- Left: Bildora Logo -->
+			<a
+				href="/"
+				class="flex items-center gap-2.5 transition-opacity hover:opacity-90"
+				aria-label="Bildora Home"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="108"
+					height="30"
+					fill="none"
+					class="h-6 w-auto sm:h-7"
+				>
+					<g fill="#fff" clip-path="url(#logo-clip)">
+						<path d="M13.598 23.477h6.181v2.261h-6.181zM26.605 1.954h-2.858v2.63l2.858 2.16z" />
+						<path
+							d="M2.299 14.749V29.83H7.87v-4.092h3.97v-4.02h3.97v-4.063h3.97v-4.042h6.137L14.994 5.414z"
+						/>
+						<path
+							d="M9.628 27.496h6.182v2.334H9.628zm7.94 0h6.181v2.334h-6.181zM0 11.357v1.812h1.48l13.525-9.945 13.249 9.945H30v-1.653L14.996.17zm25.507 16.14h2.194v2.333h-2.194zm-3.97-12.126h6.164v2.284h-6.163zm-3.97 4.042h6.182v2.306h-6.181zm3.97 4.064h6.164v2.261h-6.163zm3.97-4.064h2.194v2.306h-2.194z"
+						/>
+					</g>
+					<path
+						fill="#fff"
+						d="M35.435 25V10.455h5.568q1.577 0 2.62.497 1.051.49 1.57 1.342.526.852.526 1.932 0 .887-.341 1.52a2.9 2.9 0 0 1-.916 1.015q-.575.39-1.286.561v.143q.774.042 1.484.475a3.3 3.3 0 0 1 1.172 1.208q.455.78.455 1.889 0 1.13-.547 2.031-.546.896-1.648 1.413-1.1.519-2.77.519zm2.635-2.202h2.833q1.435 0 2.067-.547.64-.553.64-1.42a2.17 2.17 0 0 0-1.23-1.989q-.588-.305-1.406-.305H38.07zm0-6.157h2.606q.682 0 1.229-.249.545-.256.86-.717.319-.47.319-1.108 0-.846-.597-1.392-.589-.547-1.754-.547H38.07zM48.466 25V14.09h2.57V25zm1.292-12.457a1.5 1.5 0 0 1-1.051-.405 1.3 1.3 0 0 1-.44-.987q0-.583.44-.988a1.5 1.5 0 0 1 1.051-.412q.618 0 1.051.412.44.406.44.988 0 .575-.44.987-.433.405-1.05.405m6.493-2.088V25h-2.57V10.455zm6.693 14.737q-1.287 0-2.302-.66-1.015-.661-1.605-1.918t-.59-3.054q0-1.818.597-3.068.604-1.258 1.627-1.897a4.2 4.2 0 0 1 2.28-.646q.958 0 1.576.327.618.319.98.774.363.447.561.845h.107v-5.44h2.578V25h-2.528v-1.719h-.156a4.4 4.4 0 0 1-.576.845 3.2 3.2 0 0 1-.994.753q-.618.313-1.555.313m.717-2.11q.816 0 1.392-.44.575-.447.874-1.243.297-.795.298-1.854 0-1.058-.298-1.839-.292-.78-.867-1.215-.568-.432-1.4-.433-.858 0-1.434.448-.575.447-.866 1.235t-.291 1.805q0 1.022.29 1.825.299.796.874 1.257.583.454 1.428.454m12.59 2.131q-1.597 0-2.77-.703a4.77 4.77 0 0 1-1.818-1.967q-.639-1.265-.639-2.955t.64-2.962a4.76 4.76 0 0 1 1.817-1.974q1.173-.703 2.77-.703 1.6 0 2.77.703a4.7 4.7 0 0 1 1.811 1.974q.647 1.272.647 2.962t-.647 2.955a4.73 4.73 0 0 1-1.81 1.967q-1.173.703-2.77.703m.015-2.06q.866 0 1.448-.475.584-.483.867-1.293.291-.81.291-1.804 0-1.001-.291-1.811-.284-.817-.867-1.3-.582-.483-1.448-.483-.888 0-1.478.483-.583.483-.873 1.3a5.4 5.4 0 0 0-.284 1.811q0 .994.284 1.804.291.81.873 1.293.59.475 1.478.475M83.66 25V14.09h2.493v1.82h.113q.3-.945 1.023-1.457a2.8 2.8 0 0 1 1.67-.518q.212 0 .475.021.27.014.447.05v2.365a2.7 2.7 0 0 0-.518-.1 5 5 0 0 0-.675-.05 2.6 2.6 0 0 0-1.264.306q-.554.299-.873.831a2.34 2.34 0 0 0-.32 1.229V25zm10.873.22q-1.036 0-1.868-.37a3.05 3.05 0 0 1-1.306-1.107q-.476-.733-.476-1.804 0-.924.34-1.527a2.64 2.64 0 0 1 .931-.966 4.7 4.7 0 0 1 1.328-.547q.746-.192 1.541-.277.96-.099 1.556-.177.597-.085.866-.256.277-.178.277-.547v-.043q0-.802-.475-1.242-.477-.44-1.371-.44-.945 0-1.499.411-.546.413-.738.973l-2.401-.34q.285-.996.938-1.663.653-.675 1.597-1.008a6.1 6.1 0 0 1 2.089-.341q.787 0 1.57.184.78.186 1.427.611.645.419 1.037 1.144.397.724.397 1.81V25h-2.471v-1.499h-.085a3.1 3.1 0 0 1-.66.853q-.42.39-1.06.632-.63.234-1.484.234m.668-1.889q.774 0 1.342-.305.569-.313.874-.824.313-.512.313-1.115V19.8q-.121.1-.412.185-.285.085-.64.149a20 20 0 0 1-.703.114l-.603.085a4.5 4.5 0 0 0-1.03.256 1.7 1.7 0 0 0-.718.497q-.262.312-.262.81 0 .71.518 1.072.519.362 1.321.362m9.261 1.825q-.646 0-1.108-.454a1.47 1.47 0 0 1-.454-1.108q-.007-.64.454-1.094a1.53 1.53 0 0 1 1.108-.454q.625 0 1.087.454a1.49 1.49 0 0 1 .249 1.882 1.6 1.6 0 0 1-.569.568 1.5 1.5 0 0 1-.767.206"
+					/>
+					<defs><clipPath id="logo-clip"><path fill="#fff" d="M0 0h30v30H0z" /></clipPath></defs>
+				</svg>
+			</a>
 
-		<!-- Navigation Links -->
-		<ul class="flex items-center gap-1 text-sm font-medium">
-			{#each siteConfig.navLinks as link}
-				{@const isActive =
-					page.url.pathname === link.href ||
-					(link.href !== '/' && page.url.pathname.startsWith(link.href))}
-				<li>
+			<!-- Center: Frosted Capsule Navigation Bar -->
+			<nav
+				class="hidden items-center gap-7 rounded-full border border-white/20 bg-white/10 px-8 py-2.5 shadow-sm backdrop-blur-md transition-all md:flex"
+				aria-label="Primary Navigation"
+			>
+				{#each navItems as link}
+					{@const isActive =
+						page.url.pathname === link.href ||
+						(link.href !== '/' && page.url.pathname.startsWith(link.href))}
 					<a
 						href={link.href}
-						class="relative px-3.5 py-1.5 rounded-full transition-all duration-300 {isActive
-							? 'bg-white/10 text-[#e5a93c] font-semibold'
-							: 'text-white/70 hover:text-white hover:bg-white/5'}"
+						class="text-xs font-medium tracking-wide text-white transition-colors duration-200 sm:text-sm {isActive
+							? 'font-semibold text-white opacity-100'
+							: 'opacity-80 hover:opacity-100'}"
 					>
 						{link.label}
 					</a>
-				</li>
-			{/each}
-		</ul>
-
-		<!-- Action CTA -->
-		<a
-			href="/contact"
-			class="rounded-full bg-[#e5a93c] px-4 py-1.5 text-xs font-semibold text-black transition-all hover:bg-[#f7d070] hover:scale-105 active:scale-95"
-		>
-			Inquire
-		</a>
-	</nav>
-
-	<!-- Mobile Header Bar -->
-	<div
-		class="flex w-full items-center justify-between glass-island px-5 py-3 rounded-full md:hidden shadow-lg"
-	>
-		<a href="/" class="flex items-center gap-2 text-white">
-			<div class="h-2 w-2 rounded-full bg-[#e5a93c]"></div>
-			<span class="text-sm font-bold tracking-tight text-white">{siteConfig.name}</span>
-		</a>
-
-		<!-- Animated Hamburger to X Button -->
-		<button
-			type="button"
-			onclick={toggleMenu}
-			class="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-[#e5a93c]"
-			aria-expanded={isMenuOpen}
-			aria-label={isMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-		>
-			<span class="sr-only">Toggle navigation menu</span>
-			<div class="flex h-3.5 w-4 flex-col justify-between">
-				<span
-					class="block h-[2px] w-full bg-white transition-all duration-300 {isMenuOpen
-						? 'translate-y-[5px] rotate-45 bg-[#e5a93c]'
-						: ''}"
-				></span>
-				<span
-					class="block h-[2px] w-full bg-white transition-opacity duration-300 {isMenuOpen
-						? 'opacity-0'
-						: 'opacity-100'}"
-				></span>
-				<span
-					class="block h-[2px] w-full bg-white transition-all duration-300 {isMenuOpen
-						? '-translate-y-[7px] -rotate-45 bg-[#e5a93c]'
-						: ''}"
-				></span>
-			</div>
-		</button>
-	</div>
-
-	<!-- Full-screen Mobile Menu Overlay -->
-	{#if isMenuOpen}
-		<div
-			class="fixed inset-0 top-0 left-0 z-50 flex h-screen w-screen flex-col justify-between bg-[#181818]/95 p-8 backdrop-blur-3xl md:hidden overflow-y-auto"
-			role="dialog"
-			aria-modal="true"
-		>
-			<div class="flex items-center justify-between border-b border-white/10 pb-6">
-				<div class="flex items-center gap-3">
-					<div class="h-3 w-3 rounded-full bg-[#e5a93c]"></div>
-					<div>
-						<div class="text-base font-bold text-white">{siteConfig.name}</div>
-						<div class="text-xs text-white/50">{siteConfig.title}</div>
-					</div>
-				</div>
-
-				<button
-					type="button"
-					onclick={closeMenu}
-					class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white"
-					aria-label="Close menu"
-				>
-					✕
-				</button>
-			</div>
-
-			<!-- Mobile Nav Links -->
-			<nav class="my-auto py-8">
-				<ul class="flex flex-col gap-6">
-					{#each siteConfig.navLinks as link}
-						{@const isActive =
-							page.url.pathname === link.href ||
-							(link.href !== '/' && page.url.pathname.startsWith(link.href))}
-						<li>
-							<a
-								href={link.href}
-								onclick={closeMenu}
-								class="text-3xl font-bold tracking-tight transition-colors font-display {isActive
-									? 'text-[#e5a93c]'
-									: 'text-white/80 hover:text-white'}"
-							>
-								{link.label}
-							</a>
-						</li>
-					{/each}
-				</ul>
+				{/each}
 			</nav>
 
-			<!-- Mobile Footer -->
-			<div class="border-t border-white/10 pt-6 flex justify-between items-center text-xs text-white/60">
-				<span>{siteConfig.headquarters.city} // {siteConfig.headquarters.elevation}</span>
+			<!-- Right: White Pill Button ("Let's Build") -->
+			<div class="hidden items-center md:flex">
 				<a
 					href="/contact"
-					onclick={closeMenu}
-					class="rounded-full bg-[#e5a93c] px-4 py-2 font-semibold text-black"
+					class="inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-xs font-semibold text-[#181716] shadow-md transition-all duration-300 hover:scale-[1.02] hover:bg-neutral-100 active:scale-95 sm:text-sm"
 				>
-					Start a project
+					Let's Build
 				</a>
 			</div>
+
+			<!-- Mobile Navigation Trigger & Action Button -->
+			<div class="flex items-center gap-3 md:hidden">
+				<a
+					href="/contact"
+					class="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-[#181716] shadow-sm transition-all"
+				>
+					Let's Build
+				</a>
+				<button
+					type="button"
+					onclick={toggleMenu}
+					class="flex items-center justify-center rounded-full border border-white/25 bg-black/40 p-2 text-white backdrop-blur-md"
+					aria-expanded={isMenuOpen}
+					aria-label={isMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+				>
+					<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						{#if isMenuOpen}
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						{:else}
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"
+							/>
+						{/if}
+					</svg>
+				</button>
+			</div>
 		</div>
-	{/if}
+	</div>
 </header>
+
+<!-- Mobile Navigation Overlay -->
+{#if isMenuOpen}
+	<div
+		class="fixed inset-0 z-40 flex flex-col justify-between bg-black/95 p-6 pt-28 backdrop-blur-2xl transition-all duration-300 sm:p-8 md:hidden"
+	>
+		<nav class="space-y-5" aria-label="Mobile Navigation">
+			{#each navItems as item, idx}
+				{@const isActive =
+					page.url.pathname === item.href ||
+					(item.href !== '/' && page.url.pathname.startsWith(item.href))}
+				<div>
+					<a
+						href={item.href}
+						onclick={closeMenu}
+						class="flex items-baseline justify-between py-2 text-2xl font-bold tracking-tight {isActive
+							? 'text-[#d9531e]'
+							: 'text-white/90 hover:text-white'}"
+					>
+						<span>{item.label}</span>
+						<span class="font-mono text-xs text-white/40">0{idx + 1}</span>
+					</a>
+				</div>
+			{/each}
+		</nav>
+
+		<div class="space-y-4 border-t border-white/10 pt-8">
+			<a
+				href="/contact"
+				onclick={closeMenu}
+				class="flex w-full items-center justify-center rounded-full bg-white py-3.5 text-center text-sm font-semibold text-black shadow-lg"
+			>
+				Let's Build →
+			</a>
+			<p class="text-center font-mono text-[11px] tracking-widest text-white/50 uppercase">
+				BILDORA · ARCHITECTURE &amp; ENGINEERING
+			</p>
+		</div>
+	</div>
+{/if}
